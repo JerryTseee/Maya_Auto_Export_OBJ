@@ -1,5 +1,18 @@
 import maya.cmds as cmds
 import os
+import json
+
+#define a function to accept the info file and return the frame numbers value
+def get_frame_numbers(json_file_path):
+    with open(json_file_path, "r") as file:
+        data = json.load(file)
+    
+    frames = data.get("frames")#get the frames key
+    if frames is None:
+        raise ValueError("No frames key found in the file")
+    return frames
+json_file_path = "E:\\ARFriendInteract\\Captures\\iPhone2\\20240422_010Jackson_81\\take.json"
+frame_numbers = get_frame_numbers(json_file_path)#frame number
 
 def export_obj_sequence(export_dir, frame_start, frame_end):
     selection = cmds.ls(selection=True)
@@ -33,20 +46,10 @@ def export_obj_sequence(export_dir, frame_start, frame_end):
 
         print("Exported:", filename)
 
-#this function is used to check the frame number of the video
-def check_frame_number(sequence_path):
-    try:
-        with open(sequence_path, "r") as file:
-            for line in line:
-                if line
-    except:
-        print("error reading the file")
-        raise
-    return None
 
 # Example usage
-export_dir = "F:\\Jerry\\Test_Jackson_Automation"#this is the destination file
+export_dir = "F:\\Jerry\\Automate_Maya_OBJ"#this is the destination file
 frame_start = 1#start frame
-frame_end = 270#end frame
+frame_end = frame_numbers#end frame
 
 export_obj_sequence(export_dir, frame_start, frame_end)
