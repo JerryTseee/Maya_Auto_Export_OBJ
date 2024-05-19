@@ -11,7 +11,8 @@ def get_frame_numbers(json_file_path):
     if frames is None:
         raise ValueError("No frames key found in the file")
     return frames
-    
+
+#this is the file path that contains the frame number data!!!
 json_file_path = "E:\\ARFriendInteract\\Captures\\iPhone2\\20240422_010Jackson_81\\take.json"
 frame_numbers = get_frame_numbers(json_file_path)#frame number
 
@@ -49,6 +50,7 @@ def export_obj_sequence(export_dir, frame_start, frame_end):
 
 
 # Example usage
+#export the OBJ files to the below path!!!
 export_dir = "F:\\Jerry\\Automate_Maya_OBJ"#this is the destination file
 frame_start = 1#start frame
 frame_end = frame_numbers#end frame
