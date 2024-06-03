@@ -60,20 +60,12 @@ def get_frame_numbers(filePath):
     json_content = content.split("=", 1)[-1].strip()
     # Parse the extracted JSON content
     parsed_data = json.loads(json_content)
-    # Save the parsed data back to the file in valid JSON format
-    with open(filePath, "w") as file:
-        json.dump(parsed_data, file, indent=4)
 
-
-    #After the processing, start to get the frame value
-    with open(filePath, "r") as file:
-        content = json.load(file)
-
-    key_list = list(content.keys())
-
+    #just simply use the parsed data, not re-reading the file
+    key_list = list(parsed_data.keys())
     first_key = key_list[0]
 
-    length = len(content[first_key])
+    length = len(parsed_data[first_key])
     return length
 
 
